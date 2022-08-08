@@ -50,7 +50,8 @@ router.get("/", auth.optional, function (req, res, next) {
   }
 
   if (typeof req.query.title !== "undefined") {
-    query.title = req.query.title;
+    const titleRegex = new RegExp(`${req.query.title}`, "gi");
+    query.title = titleRegex;
   }
 
   if (typeof req.query.tag !== "undefined") {
